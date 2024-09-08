@@ -1,0 +1,127 @@
+/* Sidebar.css */
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.top-bar {
+  height: 80px; /* Ajusta la altura de la barra superior según sea necesario */
+  background-color: #007ffd; /* Color de fondo azul */
+  width: 100%;
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0;
+  left: 0;
+  z-index: 1; /* Menor que la barra lateral */
+}
+
+.sidebar {
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  width: 120px; /* Ancho de la barra lateral */
+  position: fixed; /* Fija la barra lateral en su lugar */
+  top: 0;
+  left: 0;
+  background-color: #007ffd; /* Color de fondo de la barra lateral */
+  color: #fff; /* Color del texto */
+  font-family: Arial, sans-serif; /* Fuente del texto */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px; 
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+  z-index: 2;
+}
+
+.sidebar-brand {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.sidebar-nav {
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar-item {
+  margin-left: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0; /* Ajusta el espaciado interno */
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+  background-color: #f5f7f865; 
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Espacio entre el logo y los enlaces */
+}
+
+.logo-image {
+  width: 100px; /* Ajusta el tamaño del logo según sea necesario */
+  margin-bottom: 10px; /* Espacio entre el logo y el título */
+}
+
+.logo-text {
+  color: white; /* Color del texto */
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+/* Linea divisora blanca */
+.divider {
+  width: 100%;
+  border: 0;
+  border-top: 2px solid rgb(255, 255, 255); /* Línea blanca sutil */
+  margin: 10px 0; /* Espaciado arriba y abajo de la línea */
+}
+
+.icon {
+  font-size: 20px; /* Ajusta el tamaño del icono según sea necesario */
+  margin-bottom: 0px; /* Espacio entre el icono y el texto */
+}
+
+.link-text {
+  font-size: 12px;
+  display: block;
+  padding-top: 5px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilo para la barra de desplazamiento en navegadores Webkit */
+.sidebar::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del pulgar de la barra de desplazamiento */
+  border-radius: 4px; /* Radio del borde del pulgar */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del pulgar al pasar el ratón */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color del rastro de la barra de desplazamiento */
+  border-radius: 4px; /* Radio del borde del rastro */
+}
+
