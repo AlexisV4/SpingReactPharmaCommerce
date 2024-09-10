@@ -22,6 +22,12 @@ public class CompraController {
     @Autowired
     private CompraServicio compraServicio;
 
+    @GetMapping("/activos")
+    public List<Compra> getActiveCompras(){
+        return compraServicio.getAllCompras();
+    }
+
+
     @GetMapping
     public ResponseEntity<List<Compra>> getAllCompras(){
         try {

@@ -112,7 +112,7 @@ export const Compras = ({setSection}) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Buscar producto..."
+              placeholder="Buscar compra..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{ maxWidth: '300px', marginLeft: '20px', marginBottom: '10px' }}

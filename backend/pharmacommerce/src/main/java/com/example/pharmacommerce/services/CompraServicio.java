@@ -14,7 +14,7 @@ public class CompraServicio {
     private CompraRepository compraRepository;
 
     public List<Compra> getAllCompras(){
-        return compraRepository.findAll();
+        return compraRepository.findActiveCompras();
     }
     
     public Compra getCompraById(int id){

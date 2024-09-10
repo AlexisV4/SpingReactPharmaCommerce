@@ -15,7 +15,7 @@ public class ProductoServicio {
 
     //Metodo que devolverá una lista de productos encontrados.
     public List<Producto> getAllProducts(){
-        return productoRepository.findAll();
+        return productoRepository.findActiveProducts();
     }
 
     public Producto getProductById(int id){

@@ -31,6 +31,17 @@ export const fetchEmpleados = async(setEmpleados) =>{
   }
 }
 
+export const fetchClientes = async (setClientes) => {
+  try {
+    const response = await fetch("http://localhost:8080/api/clientes/activos")
+    const data = await response.json();
+    setClientes(data);
+  } catch (error) {
+    console.error('Error al obtener los clientes:', error);
+  }
+  
+}
+
 export const fetchMetodoPago = async(setMetodoPago) =>{
   try {
     const response = await fetch('http://localhost:8080/api/metodos_pago');
@@ -44,12 +55,10 @@ export const fetchMetodoPago = async(setMetodoPago) =>{
 
 export const fetchProductos = async (setProductos) => {
     try {
-      const response = await fetch('http://localhost:8080/api/productos');
+      const response = await fetch('http://localhost:8080/api/productos/activos');
       if (response.ok) {
         const data = await response.json();
-        // Filtrar los productos inactivos aquí si es necesario
-        const productosActivos = data.filter(producto => producto.activo);
-        setProductos(productosActivos);
+        setProductos(data);
       } else {
         console.error('Error fetching productos');
       }
@@ -60,11 +69,10 @@ export const fetchProductos = async (setProductos) => {
 
 export const fetchCompras = async (setCompras) => {
   try {
-    const response = await fetch('http://localhost:8080/api/compras');
+    const response = await fetch('http://localhost:8080/api/compras/activos');
     if(response.ok){
       const data = await response.json();
-      const comprasActivas = data.filter(compra => compra.activo);
-      setCompras(comprasActivas);
+      setCompras(data);
     } else{
       console.error('Error fetching compras');
     }
@@ -75,4 +83,29 @@ export const fetchCompras = async (setCompras) => {
   }
   
 };
+
+export const fetchCiudades = async (setCiudades) => {
+  try {
+    const response = await fetch("http://localhost:8080/api/ciudades");
+    const data = await response.json();
+    setCiudades(data);
+  } catch (error) {
+    console.error('Error al obtener las ciudades:', error);
+    
+  }
+  
+}
+
+export const fetchGeneros = async (setGeneros) => {
+  try {
+    const response = await fetch("http://localhost:8080/api/generos");
+    const data = await response.json();
+    setGeneros(data);
+  } catch (error) {
+    console.error('Error al obtener los generos:', error);
+    
+  }
+  
+}
+
 
