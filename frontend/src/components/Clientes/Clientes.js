@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { EditarCliente } from './EditarCliente';
 import Swal from 'sweetalert2';
 
-export const Clientes = () => {
+export const Clientes = ({setSection}) => {
     const[clientes, setClientes] = useState([]);
     const[searchTerm, setSearchTerm] = useState("");
     const[currentPage, setCurrentPage] = useState(1);
@@ -62,6 +62,37 @@ export const Clientes = () => {
     }
   };
 
+  const handleEliminarClick = (cliente) => {
+    Swal.fire({
+      title: 'Confirmar Eliminación',
+      text: '¿Estás seguro de que quieres inactivar este cliente?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, inactivar',
+      cancelButtonText: 'Cancelar'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(`http://localhost:8080/api/clientes/${cliente.id_cliente}/inactivar`, {
+            method: 'PUT',
+          });
+          if (response.ok) {
+            setClientes(prevClientes =>
+              prevClientes.filter(p => p.id_cliente !== cliente.id_cliente)
+            );
+            Swal.fire('Inactivado!', 'El cliente ha sido inactivado.', 'success');
+          } else {
+            Swal.fire('Error!', 'No se pudo inactivar eli cliente.', 'error');
+          }
+        } catch (error) {
+          console.error('Error al inactivar el cliente:', error);
+        }
+      }
+    });
+  };
+
   return (
     <div>
       <div className="titulo">
@@ -69,7 +100,7 @@ export const Clientes = () => {
       </div>
 
       <div className="button-container d-flex align-items-center mb-3">
-        <button type="button" className="btn btn-primary mr-3">
+        <button type="button" className="btn btn-primary mr-3" onClick={() => setSection('CrearCliente')}>
           Añadir Cliente
         </button>
         <input
@@ -110,7 +141,7 @@ export const Clientes = () => {
                 <td>{cliente.id_genero}</td>
                 <td>
                   <button type="button" className="btn btn-primary" onClick={() => handleEditClick(cliente)}>Editar</button>
-                  <button type="button" className="btn btn-danger">Eliminar</button>
+                  <button type="button" className="btn btn-danger" onClick={() => handleEliminarClick(cliente)}>Eliminar</button>
                 </td>
               </tr>
             ))}

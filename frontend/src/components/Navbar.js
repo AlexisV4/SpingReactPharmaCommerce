@@ -33,7 +33,7 @@ export const Navbar = ({ setSection }) => {
         </li>
         <hr className="divider" />
         <li className="sidebar-item">
-          <a className="sidebar-link" href="#">
+          <a className="sidebar-link" href="#" onClick={() => setSection('Empleados')}>
           <i className='fas fa-users icon'></i>
             <span className="link-text">Empleados</span>
           </a>

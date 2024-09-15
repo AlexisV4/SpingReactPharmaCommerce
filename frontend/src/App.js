@@ -5,9 +5,11 @@ import { Navbar } from './components/Navbar';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Productos from './components/Productos/Productos'; // Importa las secciones como componentes
 import Compras from './components/Compras/Compras'; // Importa las secciones como componentes
+import { Empleados } from './components/Empleados/Empleados';
 import { Clientes } from './components/Clientes/Clientes';
 import { CrearProducto } from './components/Productos/CrearProducto';
 import { CrearCompra } from './components/Compras/CrearCompra';
+import { CrearCliente } from './components/Clientes/CrearCliente';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -22,10 +24,14 @@ function App() {
         return <Compras setSection={setSection}/>;
       case 'Clientes':
         return <Clientes setSection={setSection}/>;
+      case 'Empleados':
+        return <Empleados setSection={setSection}/>;
       case 'CrearProducto':
         return <CrearProducto setSection={setSection}/>;
       case 'CrearCompra':
           return <CrearCompra setSection={setSection}/>;
+      case 'CrearCliente':
+        return <CrearCliente setSection={setSection}/>;
       default:
         return <Productos setSection={setSection}/>;
     }

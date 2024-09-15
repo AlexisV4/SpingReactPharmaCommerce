@@ -108,4 +108,44 @@ export const fetchGeneros = async (setGeneros) => {
   
 }
 
+export const fetchRoles = async (setRoles) => {
+  try {
+    const response = await fetch("http://localhost:8080/api/roles");
+    const data = await response.json();
+    setRoles(data);
+  } catch (error) {
+    console.error('Error al obtener los roles:', error);
+    
+  }
+  
+}
+
+
+export const fetchUsuarios = async (setUsuarios) => {
+  try {
+    const response = await fetch("http://localhost:8080/api/usuarios");
+    const data = await response.json();
+    setUsuarios(data);
+  } catch (error) {
+    console.error('Error al obtener los usuarios:', error);
+    
+  }
+  
+}
+
+export const fetchEstadosEmpleado = async (setEstadosEmpleado) => {
+  try {
+    const response = await fetch("http://localhost:8080/api/estados_empleado");
+    const data = await response.json();
+    setEstadosEmpleado(data);
+  } catch (error) {
+    console.error('Error al obtener los estados:', error);
+    
+  }
+  
+}
+
+
+
+
 

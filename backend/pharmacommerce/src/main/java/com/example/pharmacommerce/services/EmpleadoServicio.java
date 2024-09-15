@@ -14,7 +14,7 @@ public class EmpleadoServicio {
     private EmpleadoRepository empleadoRepository;
 
     public List<Empleado> getAllEmpleados(){
-        return empleadoRepository.findAll();
+        return empleadoRepository.findActiveEmpleados();
     }
 
     public Empleado getEmpleadoById(int id){
