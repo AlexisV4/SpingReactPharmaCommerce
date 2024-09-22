@@ -2,6 +2,7 @@ package com.example.pharmacommerce.modelo;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -16,7 +17,10 @@ public class Empleado {
     private String telefono;
     private String correo;
     private LocalDate fecha_ingreso;
+
+    @Column(nullable = true)
     private LocalDate fecha_retiro;
+
     private int estado_de_empleado;
     private int id_usuario;
     private Boolean activo;

@@ -3,10 +3,11 @@ import { fetchEmpleados } from '../../services/apiServices';
 import Paginacion from '../Pagination/Pagination';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { EditarEmpleado } from './EditarEmpleado';
 
 export const Empleados = ({setSection}) => {
     const [empleados, setEmpleados] = useState([]);
-    const [empleadosEdit, setEmpleadosEdit] = useState(null);
+    const [empleadoEdit, setEmpleadosEdit] = useState(null);
     const [searchTerm, setSearchTerm] =  useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -29,11 +30,13 @@ export const Empleados = ({setSection}) => {
         body: JSON.stringify(formData),
         });
         if (response.ok) {
-        toast.success('Empleado actualizado correctamente');
-        setEmpleadosEdit(null);
-        fetchEmpleados(setEmpleados);
+            toast.success('Empleado actualizado correctamente');
+            setEmpleadosEdit(null);
+            fetchEmpleados(setEmpleados);
         } else {
-        toast.error('Error al actualizar el empleado');
+            const responseText = await response.text(); // Obtiene el texto de respuesta en caso de error
+            console.error('Error en la respuesta:', responseText);
+            toast.error('Error al actualizar el empleado');
         }
     } catch (error) {
         console.error('Error al actualizar el empleado:', error);
@@ -97,19 +100,22 @@ export const Empleados = ({setSection}) => {
             </div>
 
             <div className="button-container d-flex align-items-center mb-3">
-            <button type="button" className="btn btn-primary mr-3" onClick={() => setSection("")}>
+            <button type="button" className="btn btn-primary mr-3" onClick={() => setSection("CrearEmpleado")}>
                 Añadir Empleado
             </button>
             <input
                 type="text"
                 className="form-control"
-                placeholder="Buscar producto..."
+                placeholder="Buscar empleado..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 style={{ maxWidth: '300px', marginLeft: '20px', marginBottom: '10px' }}
             />
             </div>
 
+            {empleadoEdit ? (
+                <EditarEmpleado empleadoActual={empleadoEdit} onSave={handleSave} onCancel={handleCancel} />
+            ) : (
             <table className="table">
                 <thead>
                 <tr>
@@ -149,7 +155,7 @@ export const Empleados = ({setSection}) => {
                 ))}
                 </tbody>
             </table>
-            
+            )}
 
             <Paginacion
             currentPage={currentPage}

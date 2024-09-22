@@ -10,6 +10,7 @@ import { Clientes } from './components/Clientes/Clientes';
 import { CrearProducto } from './components/Productos/CrearProducto';
 import { CrearCompra } from './components/Compras/CrearCompra';
 import { CrearCliente } from './components/Clientes/CrearCliente';
+import { CrearEmpleado } from './components/Empleados/CrearEmpleado';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -32,6 +33,8 @@ function App() {
           return <CrearCompra setSection={setSection}/>;
       case 'CrearCliente':
         return <CrearCliente setSection={setSection}/>;
+      case 'CrearEmpleado':
+        return <CrearEmpleado setSection={setSection}/>;
       default:
         return <Productos setSection={setSection}/>;
     }
