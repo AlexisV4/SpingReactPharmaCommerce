@@ -13,8 +13,12 @@ public class ProveedorServicio {
     @Autowired
     private ProveedorRepository proveedorRepository;
 
-        public List<Proveedor> getAllProveedores(){
+    public List<Proveedor> getAllProveedores(){
         return proveedorRepository.findAll();
+    }
+
+    public List<Proveedor> findActiveProveedores(){
+        return proveedorRepository.findActiveProveedores();
     }
 
     public Proveedor getProveedorById(int id){
@@ -27,6 +31,14 @@ public class ProveedorServicio {
 
     public void deleteProveedor(int id){
         proveedorRepository.deleteById(id);
+    }
+
+    public void inactivarProveedor(int id){
+        Proveedor proveedor = proveedorRepository.findById(id).orElse(null);
+        if(proveedor != null){
+            proveedor.setActivo(false);
+            proveedorRepository.save(proveedor);
+        }
     }
 
 }

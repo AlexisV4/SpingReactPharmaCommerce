@@ -10,14 +10,17 @@ export const fetchCategorias = async (setCategorias) => {
 };
 
 export const fetchProveedores = async (setProveedores) => {
-    try{
-        const response = await fetch('http://localhost:8080/api/proveedores');
-        const data = await response.json();
-        setProveedores(data);
-    } catch(error){
-        console.error('Error al obtener los proveedores:', error);
+  try {
+    const response = await fetch('http://localhost:8080/api/proveedores/activos');
+    if (response.ok) {
+      const data = await response.json();
+      setProveedores(data);
+    } else {
+      console.error('Error fetching proveedores');
     }
-    
+  } catch (error) {
+    console.error('Error fetching proveedores:', error);
+  }
 };
 
 export const fetchEmpleados = async(setEmpleados) =>{

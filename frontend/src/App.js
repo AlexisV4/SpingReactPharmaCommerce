@@ -7,12 +7,14 @@ import Productos from './components/Productos/Productos'; // Importa las seccion
 import Compras from './components/Compras/Compras'; // Importa las secciones como componentes
 import { Empleados } from './components/Empleados/Empleados';
 import { Clientes } from './components/Clientes/Clientes';
+import { Proveedores } from './components/Proveedores/Proveedores';
 import { CrearProducto } from './components/Productos/CrearProducto';
 import { CrearCompra } from './components/Compras/CrearCompra';
 import { CrearCliente } from './components/Clientes/CrearCliente';
 import { CrearEmpleado } from './components/Empleados/CrearEmpleado';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [section, setSection] = useState('Productos'); // Sección inicial
@@ -27,6 +29,8 @@ function App() {
         return <Clientes setSection={setSection}/>;
       case 'Empleados':
         return <Empleados setSection={setSection}/>;
+      case 'Proveedores':
+        return <Proveedores setSection={setSection}/>;
       case 'CrearProducto':
         return <CrearProducto setSection={setSection}/>;
       case 'CrearCompra':

@@ -24,13 +24,12 @@ public class Proveedor {
     private String direccion;
     private int id_ciudad;
     private LocalDate fecha_inicio_relacion_comercial;
-
+    private Boolean activo;
 
     public Proveedor() {
     }
 
-
-    public Proveedor(int id_proveedor, String nit_proveedor, String nombre_completo, String telefono, String correo, String direccion, int id_ciudad, LocalDate fecha_inicio_relacion_comercial) {
+    public Proveedor(int id_proveedor, String nit_proveedor, String nombre_completo, String telefono, String correo, String direccion, int id_ciudad, LocalDate fecha_inicio_relacion_comercial, Boolean activo) {
         this.id_proveedor = id_proveedor;
         this.nit_proveedor = nit_proveedor;
         this.nombre_completo = nombre_completo;
@@ -39,9 +38,10 @@ public class Proveedor {
         this.direccion = direccion;
         this.id_ciudad = id_ciudad;
         this.fecha_inicio_relacion_comercial = fecha_inicio_relacion_comercial;
+        this.activo = activo;
     }
 
-    
+
 
     public int getId_proveedor() {
         return this.id_proveedor;
@@ -106,5 +106,18 @@ public class Proveedor {
     public void setFecha_inicio_relacion_comercial(LocalDate fecha_inicio_relacion_comercial) {
         this.fecha_inicio_relacion_comercial = fecha_inicio_relacion_comercial;
     }
+
+    public Boolean isActivo() {
+        return this.activo;
+    }
+
+    public Boolean getActivo() {
+        return this.activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
 
 }
